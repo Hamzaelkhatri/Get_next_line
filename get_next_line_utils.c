@@ -6,7 +6,7 @@
 /*   By: helkhatr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 08:58:31 by helkhatr          #+#    #+#             */
-/*   Updated: 2019/11/13 09:49:32 by helkhatr         ###   ########.fr       */
+/*   Updated: 2019/11/15 01:03:03 by helkhatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ char		*ft_calloc(size_t size)
 	return (str);
 }
 
-void		freez(char **as)
+int			freez(char **as)
 {
 	if (as != NULL && *as != NULL)
 	{
 		free(*as);
 		*as = NULL;
 	}
+	return (-1);
 }
 
 char		*ft_strsub(char const *s, unsigned int start, size_t len)

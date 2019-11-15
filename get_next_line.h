@@ -6,7 +6,7 @@
 /*   By: helkhatr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 08:59:04 by helkhatr          #+#    #+#             */
-/*   Updated: 2019/11/13 08:59:09 by helkhatr         ###   ########.fr       */
+/*   Updated: 2019/11/15 01:03:34 by helkhatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_calloc(size_t size);
-void	freez(char **as);
+int		freez(char **as);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 int		get_next_line(const int fd, char **line);

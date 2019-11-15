@@ -6,7 +6,7 @@
 /*   By: helkhatr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 09:26:59 by helkhatr          #+#    #+#             */
-/*   Updated: 2019/11/13 09:27:07 by helkhatr         ###   ########.fr       */
+/*   Updated: 2019/11/15 01:01:49 by helkhatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ static int		returns(char **s, char **line, int ret, int fd)
 	if (ret < 0)
 		return (-1);
 	else if (ret == 0 && s[fd] == NULL)
+	{
 		return (0);
+	}
 	else
 		return (gline(&s[fd], line));
 }
@@ -91,12 +93,14 @@ static int		returns(char **s, char **line, int ret, int fd)
 int				get_next_line(const int fd, char **line)
 {
 	int			ret;
-	static char	*str[4864];
-	char		buff[BUFFER_SIZE + 1];
+	static char	*str[1];
+	char		*buff;
 	char		*tmp;
 
-	if (fd < 0 || line == NULL || fd > 4864 || read(fd, buff, 0))
-		return (-1);
+	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE);
+	if (buff == NULL || fd < 0 || line == NULL
+			|| fd > 4864 || read(fd, buff, 0))
+		return (freez(&buff));
 	while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[ret] = '\0';
@@ -111,5 +115,6 @@ int				get_next_line(const int fd, char **line)
 		if (ft_strchr(str[fd], '\n'))
 			break ;
 	}
+	freez(&buff);
 	return (returns(str, line, ret, fd));
 }
