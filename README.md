@@ -3,3 +3,6 @@ Ce projet a pour but de vous faire coder une fonction qui renvoit une ligne term
 <br>
 <strong>Moulitest</strong>
 <a ><img src="https://5.top4top.net/p_1412iqyhl1.png" style="width:82px; height:86px" title="White flower" alt="Flower">
+<br>
+ <strong>Moulinette</strong> 
+ <a ><img src="https://4.top4top.net/p_1421381lh1.jpg" style="width:82px; height:86px" title="White flower" alt="Flower">
