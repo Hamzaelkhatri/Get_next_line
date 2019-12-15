@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helkhatr <helkhatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 09:26:59 by helkhatr          #+#    #+#             */
-/*   Updated: 2019/12/15 11:02:23 by helkhatr         ###   ########.fr       */
+/*   Updated: 2019/12/15 11:02:56 by helkhatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int		returns(char **s, char **line, int ret, int fd)
 {
 	if (ret < 0)
 		return (-1);
-	else if (s[1] == NULL && ret == 0)
+	else if (s[fd] == NULL && ret == 0)
 	{
 		*line = ft_strdup("\0");
 		return (0);
@@ -94,7 +94,7 @@ static int		returns(char **s, char **line, int ret, int fd)
 int				get_next_line(const int fd, char **line)
 {
 	int			ret;
-	static char	*str[2];
+	static char	*str[4864];
 	char		*buff;
 	char		*tmp;
 
@@ -105,17 +105,17 @@ int				get_next_line(const int fd, char **line)
 	while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[ret] = '\0';
-		if (str[1] == NULL)
-			str[1] = ft_strdup(buff);
+		if (str[fd] == NULL)
+			str[fd] = ft_strdup(buff);
 		else
 		{
-			tmp = ft_strjoin(str[1], buff);
-			free(str[1]);
-			str[1] = tmp;
+			tmp = ft_strjoin(str[fd], buff);
+			free(str[fd]);
+			str[fd] = tmp;
 		}
-		if (ft_strchr(str[1], '\n'))
+		if (ft_strchr(str[fd], '\n'))
 			break ;
 	}
 	freez(&buff);
-	return (returns(str, line, ret, 1));
+	return (returns(str, line, ret, fd));
 }
